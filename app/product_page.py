@@ -62,7 +62,7 @@ class Extract_content:
 
 		if self.request_200:
 			try:
-				with open('../data.csv', 'w') as csv_file:
+				with open('data.csv', 'w') as csv_file:
 					writer = csv.writer(csv_file, delimiter=',')
 					writer.writerow(self.header)
 					writer.writerow([self.get_title(), self.get_category(), self.get_description(), 

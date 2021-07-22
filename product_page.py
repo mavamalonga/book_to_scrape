@@ -56,7 +56,7 @@ class Extract_content:
 		return number_available
 
 	def get_review_rating(self):
-		review_rating = self.tds[-1]
+		review_rating = self.tds[-1].string
 		return review_rating
 
 	def write_data_in_csv_file(self):
@@ -77,8 +77,4 @@ class Extract_content:
 
 		if status_code == 200:
 			self.write_data_in_csv_file()
-
-
-inst = Extract_content("http://books.toscrape.com/catalogue/neither-here-nor-there-travels-in-europe_198/index.html")
-inst.main()
 

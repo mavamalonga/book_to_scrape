@@ -30,7 +30,7 @@ class Extract_urls:
 	 		new_url_list.append(url[8:])
 	 	return new_url_list
 
-	 def main(self):
+	 def extract_urls_main(self):
 	 	status_code = self.make_request()
 	 
 	 	if status_code == 200:
@@ -40,3 +40,9 @@ class Extract_urls:
 	 			return new_url_list
 	 		except Exception as e:
 	 			print(f"Failed scraping!; ERROR : {e}")
+"""
+book_to_scrape = Extract_urls(
+		"http://books.toscrape.com/catalogue/category/books/health_47/index.html")
+urls_list = book_to_scrape.extract_urls_main()
+print(urls_list)
+"""

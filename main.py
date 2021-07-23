@@ -5,7 +5,12 @@ from category_page import Extract_urls
 def call_extract_urls(page_url):
 	extract_urls = Extract_urls(page_url)
 	urls_list = extract_urls.extract_urls_main()
-	return urls_list 
+	return urls_list
+
+def check_next_page(url):
+	extract_urls = Extract_urls(url)
+	next_page = extract_urls.next_page()
+	return next_page
 
 def concat_url(category_page_url, urls_list):
 	new_urls_list = []
@@ -17,13 +22,13 @@ def call_extract_content(urls_list):
 	extract_content = Extract_content(urls_list)
 	extract_content.main()
 
-def main():
-	urls_list = call_extract_urls("http://books.toscrape.com/catalogue/category/books/mystery_3/page-1.html")
+def main(url):
+	urls_list = call_extract_urls(url)
 	new_urls_list = concat_url("http://books.toscrape.com/catalogue", urls_list)
 	call_extract_content(new_urls_list)
 
-
-main()
+url = "http://books.toscrape.com/catalogue/category/books/mystery_3/page-1.html"
+main(url)
 
 
 

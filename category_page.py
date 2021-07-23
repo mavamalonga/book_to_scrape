@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import csv
 
+
+"""extract all the links of the products of a category"""
 class Extract_urls:
 
 	 def __init__(self, url):
@@ -23,7 +25,7 @@ class Extract_urls:
 	 	if next_page is not None:
 	 		category = self.category_page_url[51:].split("/")[0]
 	 		next_page_url = f"{self.main_url}{category}/{next_page}"
-	 		print(next_page_url)
+	 	return next_page_url
 
 	 def get_urls(self):
 	 	articles_list = self.soup.find_all("article", class_="product_pod")
@@ -40,7 +42,6 @@ class Extract_urls:
 
 	 def extract_urls_main(self):
 	 	status_code = self.make_request()
-	 	self.next_page()
 	 	if status_code == 200:
 	 		try:
 	 			urls_list = self.get_urls()

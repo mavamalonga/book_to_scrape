@@ -65,8 +65,9 @@ class Extract_content:
 			status_code = self.make_request(url)
 			if status_code == 200:
 				table_values.append([self.get_title(), self.get_category(), self.get_description(), 
-					self.get_image_url(), self.get_UPC(), self.get_price_including_tax(), self.get_price_excluding_tax(),
-					self.get_number_available(), self.get_review_rating()])
+					self.get_image_url(), self.get_UPC(), self.get_price_including_tax(), 
+					self.get_price_excluding_tax(), self.get_number_available(), 
+					self.get_review_rating()])
 		return table_values
 
 	def write_data_in_csv_file(self, table_values):

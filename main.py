@@ -18,7 +18,7 @@ def call_extract_content(urls_list):
 	extract_content.main()
 
 def main():
-	urls_list = call_extract_urls("http://books.toscrape.com/catalogue/category/books/philosophy_7/index.html")
+	urls_list = call_extract_urls("http://books.toscrape.com/catalogue/category/books/mystery_3/page-1.html")
 	new_urls_list = concat_url("http://books.toscrape.com/catalogue", urls_list)
 	call_extract_content(new_urls_list)
 

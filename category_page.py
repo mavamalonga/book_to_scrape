@@ -6,6 +6,7 @@ class Extract_urls:
 
 	 def __init__(self, url):
 	 	self.category_page_url = url
+	 	self.main_url = "http://books.toscrape.com/catalogue/category/books/"
 
 	 def make_request(self):
 	 	try:
@@ -16,6 +17,13 @@ class Extract_urls:
 	 	except Exception as e:
 	 		print(f"Failed request!; ERROR : {e}")
 	 		return None
+
+	 def next_page(self):
+	 	next_page = self.soup.find("ul", class_="pager").find("li", class_="next").find("a")["href"]
+	 	if next_page is not None:
+	 		category = self.category_page_url[51:].split("/")[0]
+	 		next_page_url = f"{self.main_url}{category}/{next_page}"
+	 		print(next_page_url)
 
 	 def get_urls(self):
 	 	articles_list = self.soup.find_all("article", class_="product_pod")
@@ -32,7 +40,7 @@ class Extract_urls:
 
 	 def extract_urls_main(self):
 	 	status_code = self.make_request()
-	 
+	 	self.next_page()
 	 	if status_code == 200:
 	 		try:
 	 			urls_list = self.get_urls()

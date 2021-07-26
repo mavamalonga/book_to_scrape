@@ -1,14 +1,14 @@
 import requests
 from bs4 import BeautifulSoup
-import csv
 
 
-"""extract all the links of the products of a category"""
+"""the urls of the books"""
 class Get_all_urls_books:
 
-	 def __init__(self, url):
+	 def __init__(self, category_name, urls_list):
 	 	self.catalogue_url = "http://books.toscrape.com/catalogue"
-	 	self.all_urls_category = url
+	 	self.category_name =category_name
+	 	self.all_urls_category = urls_list
 	 	self.all_books_urls = []
 
 	 def make_request(self, category_page_n):
@@ -35,14 +35,15 @@ class Get_all_urls_books:
 	 def main(self):
 	 	for category_page_n in self.all_urls_category:
 	 		self.make_request(category_page_n)
-	 		urls = self.get_urls()
-	 	return f"{len(self.all_books_urls)} : pounds recovered"
+	 		self.get_urls()
+	 	print("There are " + str(len(self.all_books_urls)) + " books in " + str(self.category_name) + " category.")
+	 	return self.all_books_urls
 
 
 
-url = ['http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html', 
+urls_list = ['http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-2.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-3.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-4.html']
-main = Get_all_urls_books(url)
-print(main.main())
+main = Get_all_urls_books("sequential-art_5", urls_list)
+main.main()

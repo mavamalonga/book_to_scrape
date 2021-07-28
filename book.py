@@ -2,8 +2,11 @@ import requests
 from bs4 import BeautifulSoup
 
 
-"""the urls of the books"""
-class Get_all_urls_books:
+"""class which consults the pages of a chosen category, and extracts the URL 
+of the product pages of each book belonging to this category.
+At the end the main method returns the list of urls retrieved.
+"""
+class BOOKS:
 
 	 def __init__(self, category_name, urls_list):
 	 	self.catalogue_url = "http://books.toscrape.com/catalogue"
@@ -40,10 +43,11 @@ class Get_all_urls_books:
 	 	return self.all_books_urls
 
 
-
+"""
 urls_list = ['http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-2.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-3.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-4.html']
 main = Get_all_urls_books("sequential-art_5", urls_list)
 main.main()
+"""

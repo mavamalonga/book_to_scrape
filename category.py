@@ -2,8 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 
 
-"""extract all the links of the products of a category"""
-class Get_urls_category_page:
+"""class consults the chosen category page, 
+and checks if the category is multi-page and retrieves the other URLs.
+The main method returns the urls list of all the pages in the category."""
+class CATEGORIES:
 
 	 def __init__(self, url):
 	 	self.url_page = url
@@ -20,7 +22,7 @@ class Get_urls_category_page:
 	 		print("Failed request!; ERROR" + str(Exception))
 	 		return None
 
-	 def parse_url(self, next_page):
+	 def parse(self, next_page):
 	 	self.category_name = self.url_page[51:].split("/")[0]
 	 	next_page_url = self.root_url + str(self.category_name) + "/" + str(next_page)
 	 	return next_page_url
@@ -29,7 +31,7 @@ class Get_urls_category_page:
 	 	try:
 	 		next_page = self.soup.find("ul", class_="pager").find("li", class_="next").find("a")["href"]
 	 		if next_page is not None:
-	 			next_page_url = self.parse_url(next_page)
+	 			next_page_url = self.parse(next_page)
 	 			return next_page_url
 	 	except Exception:
 	 		return None
@@ -45,10 +47,7 @@ class Get_urls_category_page:
 	 	print("The are " + str(len(self.urls_list)) + " pages in the " + str(self.category_name) + " category.")
 	 	return self.category_name, self.urls_list
 
-
-
-
-
+"""
 url = "http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html"
-main = Get_urls_category_page(url)
-print(main.main())
+categories = CATEGORIES(url)
+"""

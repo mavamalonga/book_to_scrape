@@ -7,8 +7,9 @@ and checks if the category is multi-page and retrieves the other URLs.
 The main method returns the urls list of all the pages in the category."""
 class CATEGORIES:
 
-	 def __init__(self, url):
-	 	self.url_page = url
+	 def __init__(self, category_name, page_url):
+	 	self.category_name = category_name
+	 	self.url_page = page_url
 	 	self.root_url = "http://books.toscrape.com/catalogue/category/books/"
 	 	self.next_page_url = None
 	 	self.urls_list = []
@@ -23,7 +24,6 @@ class CATEGORIES:
 	 		return None
 
 	 def parse(self, next_page):
-	 	self.category_name = self.url_page[51:].split("/")[0]
 	 	next_page_url = self.root_url + str(self.category_name) + "/" + str(next_page)
 	 	return next_page_url
 
@@ -45,9 +45,11 @@ class CATEGORIES:
 	 		self.make_request()
 	 		self.next_page_url = self.get_next_page_url()
 	 	print("The are " + str(len(self.urls_list)) + " pages in the " + str(self.category_name) + " category.")
-	 	return self.category_name, self.urls_list
+	 	return self.urls_list
+
 
 """
 url = "http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html"
 categories = CATEGORIES(url)
+categories.main()
 """

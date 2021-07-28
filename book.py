@@ -10,7 +10,7 @@ class BOOKS:
 
 	 def __init__(self, category_name, urls_list):
 	 	self.catalogue_url = "http://books.toscrape.com/catalogue"
-	 	self.category_name =category_name
+	 	self.category_name = category_name
 	 	self.all_urls_category = urls_list
 	 	self.all_books_urls = []
 

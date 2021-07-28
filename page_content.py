@@ -18,7 +18,8 @@ At the end the information is saved in a csv file.
 """
 class PAGE_CONTENT:
 
-	def __init__(self, urls_list):
+	def __init__(self, category_name, urls_list):
+		self.category_name = category_name
 		self.urls_list = urls_list
 		self.all_get_values = []
 		self.header = ['title', 'category', 'product_description', 'image_url',
@@ -79,14 +80,16 @@ class PAGE_CONTENT:
 			self.get_review_rating()])
 
 	def write_data_in_csv_file(self):
+		file_name = self.category_name + ".csv"
 		try:
-			with open('data.csv', 'w', encoding="utf-8") as csv_file:
+			with open(file_name, 'w', encoding="utf-8") as csv_file:
 				writer = csv.writer(csv_file, delimiter=',')
 				writer.writerow(self.header)
 				for book in self.all_get_values:
 					writer.writerow([book[0], book[1], book[2], 
 					book[3], book[4], book[5], book[6],
 					book[7], book[8]])
+				print("writing of " + file_name + " file finished")
 		except Exception as e:
 				print("writing in the csv file failed; ERROR : " + str(e))
 	

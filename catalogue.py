@@ -27,9 +27,11 @@ class CATALOGUE:
 	 	side_categories = self.soup.find("div", class_="side_categories")
 	 	nav_list = side_categories.find("ul", class_="nav nav-list")
 	 	all_li_list = nav_list.find_all("li")
+
 	 	for path_index_page in all_li_list:
+	 		category_name = path_index_page.find("a").string.replace("\n", "").replace(" ", "")
 	 		category_url = self.concat(path_index_page.find("a")["href"])
-	 		self.urls_list.append(category_url)
+	 		self.urls_list.append((category_name, category_url))
 	 	return self.urls_list
 
 	 def main(self):

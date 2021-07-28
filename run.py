@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from catalogue import CATALOGUE
 from category import CATEGORIES
 from book import BOOKS

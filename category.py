@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import requests
 from bs4 import BeautifulSoup
 
@@ -52,7 +53,7 @@ class CATEGORIES:
 
 
 """
-url = "https://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html"
+url = "https://books.toscrape.com/catalogue/category/books/womens-fiction_9/index.html"
 category_name = "sequential-art"
 categories = CATEGORIES(category_name, url)
 main = categories.main()

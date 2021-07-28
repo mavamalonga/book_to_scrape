@@ -8,46 +8,45 @@ At the end the main method returns the list of urls retrieved.
 """
 class BOOKS:
 
-	 def __init__(self, category_name, urls_list):
-	 	self.catalogue_url = "http://books.toscrape.com/catalogue"
+	 def __init__(self, category_name, page_list):
+	 	self.catalogue_index_page = "http://books.toscrape.com/catalogue"
 	 	self.category_name = category_name
-	 	self.all_urls_category = urls_list
-	 	self.all_books_urls = []
+	 	self.pages_list = page_list
+	 	self.books_list = []
 
-	 def make_request(self, category_page_n):
+	 def make_request(self, page):
 	 	try:
-	 		response = requests.get(category_page_n)
+	 		response = requests.get(page)
 	 		self.soup = BeautifulSoup(response.content, 'html.parser')
 	 	except Exception as e:
-	 		print(f"Failed request!; ERROR : {e}")
+	 		error = "Failed request!; ERROR : " + str(e)
+	 		print(error)
 
-	 def parse_url(self, url):
+	 def parse(self, path):
 	 	# parse and concat catalogue_url with ressource url
-	 	clear_url = self.catalogue_url + url[8:]
-	 	return clear_url
+	 	book = self.catalogue_index_page + path[8:]
+	 	return book
 
-
-	 def get_urls(self):
+	 def get_books(self):
 	 	articles_list = self.soup.find_all("article", class_="product_pod")
 	 	for article in articles_list:
-	 		url = article.find("div", class_="image_container").find("a")["href"]
-	 		parse_url = self.parse_url(url)
-	 		self.all_books_urls.append(parse_url)
-	 	return self.all_books_urls
+	 		path = article.find("div", class_="image_container").find("a")["href"]
+	 		book = self.parse(path)
+	 		self.books_list.append(book)
+	 	return self.books_list
 
 	 def main(self):
-	 	for category_page_n in self.all_urls_category:
-	 		self.make_request(category_page_n)
-	 		self.get_urls()
-	 	print("There are " + str(len(self.all_books_urls)) + " books in " + str(self.category_name) + " category.")
-	 	return self.all_books_urls
+	 	for page in self.pages_list:
+	 		self.make_request(page)
+	 		self.get_books()
+	 	print("There are " + str(len(self.books_list)) + " books in " + str(self.category_name) + " category.")
+	 	return self.books_list
 
 
-"""
+
 urls_list = ['http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-2.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-3.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-4.html']
-main = Get_all_urls_books("sequential-art_5", urls_list)
-main.main()
-"""
+books = BOOKS("sequential-art_5", urls_list)
+books.main()

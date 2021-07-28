@@ -21,21 +21,20 @@ class PAGE_CONTENT:
 	def __init__(self, category_name, books_list):
 		self.category_name = category_name
 		self.books_list = books_list
-		self.all_get_values = []
+		self.data_list = []
 		self.header = ['title', 'category', 'product_description', 'image_url',
 			'universal_product_code', 'price_including_tax', 'price_excluding_tax', 
 			'number_available','review_rating']
 
-	def make_request(self, url):
+	def make_request(self, page):
 		try:
-			response = requests.get(url)
+			response = requests.get(page)
 			self.soup = BeautifulSoup(response.content, 'html.parser')
 			self.table_striped = self.soup.find_all("table", class_="table table-striped")
 			self.tds = self.table_striped[0].find_all("td")
-		except Exception:
-			print("Failed request!; ERROR :" + str(Exception))
-			return None
-		
+		except Exception as e:
+			error = "Failed request!; ERROR :" + str(e)
+	
 	def get_title(self):
 		title = self.soup.find("title").string
 		return title
@@ -73,33 +72,36 @@ class PAGE_CONTENT:
 		review_rating = self.tds[-1].string
 		return review_rating
 
-	def call_all_get_methods(self):
-		self.all_get_values.append([self.get_title(), self.get_category(), self.get_description(), 
+	def call_methods(self):
+		self.data_list.append([self.get_title(), self.get_category(), self.get_description(), 
 			self.get_image_url(), self.get_UPC(), self.get_price_including_tax(), 
 			self.get_price_excluding_tax(), self.get_number_available(), 
 			self.get_review_rating()])
 
-	def write_data_in_csv_file(self):
+	def write_data(self):
 		file_name = self.category_name + ".csv"
 		try:
 			complete_name = os.path.join('csv/', file_name)
 			with open(complete_name, 'w', encoding="utf-8") as csv_file:
 				writer = csv.writer(csv_file, delimiter=',')
 				writer.writerow(self.header)
-				for book in self.all_get_values:
-					writer.writerow([book[0], book[1], book[2], 
-					book[3], book[4], book[5], book[6],
-					book[7], book[8]])
+
+				for data in self.data_list:
+					writer.writerow([data[0], data[1], data[2], 
+					data[3], data[4], data[5], data[6],
+					data[7], data[8]])
+
 				print("writing of " + file_name + " file finished")
 		except Exception as e:
-				print("writing in the csv file failed; ERROR : " + str(e))
+			error = "writing in the csv file failed; ERROR : " + str(e)
+			print(e)
 	
 	def main(self):
 		for book in self.books_list:
 			self.make_request(book)
-			self.call_all_get_methods()
+			self.call_methods()
 		
-		self.write_data_in_csv_file()
+		self.write_data()
 
 """
 books_list = ['http://books.toscrape.com/catalogue/scott-pilgrims-precious-little-life-scott-pilgrim-1_987/index.html', 'http://books.toscrape.com/catalogue/tsubasa-world-chronicle-2-tsubasa-world-chronicle-2_949/index.html', 'http://books.toscrape.com/catalogue/this-one-summer_947/index.html', 

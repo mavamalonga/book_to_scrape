@@ -4,7 +4,7 @@ import csv
 import os.path
 from bs4 import BeautifulSoup
 
-directory = "C:\\Users\\HP\\Desktop\\book_scrape_program"
+directory = "C:\\Users\\HP\\Desktop\\book_to_scrape"
 os.chdir(directory)
 
 """class which visits all the product pages of a category from 
@@ -34,6 +34,7 @@ class PAGE_CONTENT:
 	
 	def get_title(self):
 		title = self.soup.find("title").string
+		title = title.split('|')[0] #parse title
 		return title
 
 	def get_category(self):
@@ -63,6 +64,10 @@ class PAGE_CONTENT:
 
 	def get_number_available(self):
 		number_available = self.tds[5].string
+		# parse number available
+		number_available = number_available.split()[2]
+		number_available = number_available.replace("(", "").replace(")", "")
+		number_available = number_available.split()[0]
 		return number_available
 
 	def get_review_rating(self):

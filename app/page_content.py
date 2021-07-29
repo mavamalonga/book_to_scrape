@@ -4,16 +4,13 @@ import csv
 import os.path
 from bs4 import BeautifulSoup
 
+directory = "C:\\Users\\HP\\Desktop\\book_scrape_program"
+os.chdir(directory)
+
 """class which visits all the product pages of a category from 
 the list of urls it receives and retrieves the following information :
-	- product_page_url
-	- universal_product_code
-	- title
-	- price_including_tax
-	- price_excluding_tax
-	- category
-	- review_rating
-	- image_url
+product_page_url, universal_product_code, title, price_including_tax,
+price_excluding_tax, category, review_rating, image_url.
 At the end the information is saved in a csv file.
 """
 class PAGE_CONTENT:

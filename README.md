@@ -1,4 +1,3 @@
-<title>BookToScrape</title>
 <h1>Book to Scrape que ce que c'est ?</h1>
 <p>
 	Book to scrape est un mini programme de scraping écrit en python, son but est de suivre les prix de livres sur le site https://books.toscrape.com.
@@ -36,7 +35,7 @@
 			<li>print(path)</li>
 		</ul>
 		Récuperez la valeur de path, déplacez vous dans le fichier app.page_content.py, mettez à jour la variable directory et, enregistrez la modification du fichier.
-		<li>
-			
+		<li>Lancez le programme en éxecutant le fichier run.py</li>
+
 	
 

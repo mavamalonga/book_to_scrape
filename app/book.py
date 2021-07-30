@@ -9,8 +9,8 @@ At the end the main method returns the list of urls retrieved.
 """
 class BOOKS:
 
-	 def __init__(self, category_name, page_list):
-	 	self.catalogue_index_page = "http://books.toscrape.com/catalogue"
+	 def __init__(self, category_name, page_list, catalogue_page):
+	 	self.catalogue_index_page = catalogue_page
 	 	self.category_name = category_name
 	 	self.pages_list = page_list
 	 	self.books_list = []

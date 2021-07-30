@@ -4,8 +4,6 @@ import csv
 import os.path
 from bs4 import BeautifulSoup
 
-directory = "C:\\Users\\HP\\Desktop\\book_to_scrape"
-os.chdir(directory)
 
 """class which visits all the product pages of a category from 
 the list of urls it receives and retrieves the following information :
@@ -15,13 +13,12 @@ At the end the information is saved in a csv file.
 """
 class PAGE_CONTENT:
 
-	def __init__(self, category_name, books_list):
+	def __init__(self, category_name, books_list, dirname, header):
+		os.chdir(dirname)
 		self.category_name = category_name
 		self.books_list = books_list
 		self.data_list = []
-		self.header = ['title', 'category', 'product_description', 'image_url',
-			'universal_product_code', 'price_including_tax', 'price_excluding_tax', 
-			'number_available','review_rating']
+		self.header = header
 
 	def make_request(self, page):
 		try:

@@ -8,10 +8,10 @@ and checks if the category is multi-page and retrieves the other URLs.
 The main method returns the urls list of all the pages in the category."""
 class CATEGORIES:
 
-	 def __init__(self, category_name, index_page):
+	 def __init__(self, category_name, index_page, book_page):
 	 	self.category_name = category_name
 	 	self.index_page = index_page
-	 	self.root_path = "http://books.toscrape.com/catalogue/category/books/"
+	 	self.book_page = book_page
 	 	self.pages_list = []
 
 	 def make_request(self, page):
@@ -33,7 +33,7 @@ class CATEGORIES:
 	 	try:
 	 		href = self.soup.find("ul", class_="pager").find("li", class_="next").find("a")["href"]
 	 		if href is not None:
-	 			next_page = self.root_path + str(collection_name) + "/" + str(href)
+	 			next_page = self.book_page + str(collection_name) + "/" + str(href)
 	 			return next_page
 	 	except Exception as e:
 	 		error = "No next page; ERROR: " + str(e)

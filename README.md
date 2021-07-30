@@ -24,18 +24,24 @@
 		<li>Les informations récupérées sont écrites dans un fichier csv distinct pour chaque catégorie de livres.</li>
 	</ul>
 </p>
-<h1>Intallation</h1>
+<h1>Intallation et éxecution du programme</h1>
 <p>
 	<ul>
-		<li>Lancez un environnement virtuel</li>
-		<li>Lancez pip install -r requirements.txt</li>
-		<li>Ouvrez un terminal, déplacez vous dans le répertoire principal du projet, lancez l'interpreteur python et, tapez les commandes suivantes :  <ul>
-			<li>import os</li>
-			<li>path = os.getcwd()</li>
-			<li>print(path)</li>
-		</ul>
-		Récuperez la valeur de path, déplacez vous dans le fichier app.page_content.py, mettez à jour la variable directory et, enregistrez la modification du fichier.
-		<li>Lancez le programme en éxecutant le fichier run.py</li>
+		Assurez vous d'avoir installez le gestionnaire de version git en local.
+		Ensuite ouvrez le terminal git et, suivez les étapes ci-dessous.
+		1.Initialise le répertoire courant.
+		<li>git init</li>
+		2.Clonez le respository github en local
+		<li>git clone https://github.com/mavamalonga/book_to_scrape.git</li>
+		3.Placez vous dans le répertoire principal du projet et, créez un invironnement virtuel
+		<li>python -m venv env</li>
+		4.Lancez l'environnement virtuel
+		<li>env\Scripts\activate.bat</li>
+		5.Installez les paquets python avec le gestionaire de paquets pip
+		<li>pip install -r requirements.txt</li>
+		6.Lancez le programme avec le fichier run
+		<li>python run.py</li>
+</p>
 
 	
 

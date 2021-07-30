@@ -26,21 +26,40 @@
 </p>
 <h1>Intallation et éxecution du programme</h1>
 <p>
-	<ul>
-		Assurez vous d'avoir installez le gestionnaire de version git en local.
+	<ol>
+		Assurez vous d'avoir installez le gestionnaire de version git en local.<br>
 		Ensuite ouvrez le terminal git et, suivez les étapes ci-dessous.
-		1.Initialise le répertoire courant.
-		<li>git init</li>
-		2.Clonez le respository github en local
-		<li>git clone https://github.com/mavamalonga/book_to_scrape.git</li>
-		3.Placez vous dans le répertoire principal du projet et, créez un invironnement virtuel
-		<li>python -m venv env</li>
-		4.Lancez l'environnement virtuel
-		<li>env\Scripts\activate.bat</li>
-		5.Installez les paquets python avec le gestionaire de paquets pip
-		<li>pip install -r requirements.txt</li>
-		6.Lancez le programme avec le fichier run
-		<li>python run.py</li>
+		<li>Initialise le répertoire courant
+			<ul>
+				<li>git init</li>
+			</ul>
+		</li>
+		<li>Clonez le respository github en local<br>
+			<ul>
+				<li>git clone https://github.com/mavamalonga/book_to_scrape.git</li>
+			</ul>
+		</li>
+		<li>Placez vous dans le répertoire principal du projet et, créez un invironnement virtuel<br>
+			<ul>
+				<li>python -m venv env</li>
+			</ul>
+		</li>
+		<li>Lancez l'environnement virtuel
+			<ul>
+				<li>env\Scripts\activate.bat</li>
+			</ul>
+		</li>
+		<li>Installez les paquets python avec le gestionaire de paquets pip
+			<ul>
+				<li>pip install -r requirements.txt</li>
+			</ul>
+		</li>
+		<li>Lancez le programme avec le fichier run
+			<ul>
+				<li>python run.py</li>
+			</ul>
+		</li>
+	</ol>
 </p>
 
 	

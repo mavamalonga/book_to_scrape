@@ -26,7 +26,7 @@
 </p>
 <h1>Intallation et éxecution du programme</h1>
 <p>
-	Assurez vous d'avoir installé en local le gestionnaire de version git et le gestionnaire de paquets python pip.<br>
+	Assurez vous d'avoir installé en local, le gestionnaire de version git et le gestionnaire de paquets python pip.<br>
 	Ouvrez le terminal git et, suivez les étapes ci-dessous.
 	<ol>
 		<li>Initialise le répertoire courant

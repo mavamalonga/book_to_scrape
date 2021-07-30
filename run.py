@@ -33,7 +33,8 @@ def main():
 		page_content.main()
 
 	stop = timeit.default_timer()
-	print('[Finished in ' + str((stop - start)/60) + "m]")
+	time = (stop - start)/60
+	print('[Finished in ' + str(round(time, 2)) + "m]")
 
 
 if __name__ == '__main__':

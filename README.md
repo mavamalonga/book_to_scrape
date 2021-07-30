@@ -27,8 +27,8 @@
 <h1>Intallation et éxecution du programme</h1>
 <p>
 	<ol>
-		Assurez vous d'avoir installez le gestionnaire de version git en local.<br>
-		Ensuite ouvrez le terminal git et, suivez les étapes ci-dessous.
+		Assurez vous d'avoir installé en local le gestionnaire de version git et le gestionnaire de paquets python pip.<br> 
+		Ouvrez le terminal git et, suivez les étapes ci-dessous.
 		<li>Initialise le répertoire courant
 			<ul>
 				<li>git init</li>
@@ -39,7 +39,7 @@
 				<li>git clone https://github.com/mavamalonga/book_to_scrape.git</li>
 			</ul>
 		</li>
-		<li>Placez vous dans le répertoire principal du projet et, créez un invironnement virtuel<br>
+		<li>Placez vous dans le répertoire principal du projet et, créez un environnement virtuel<br>
 			<ul>
 				<li>python -m venv env</li>
 			</ul>
@@ -49,17 +49,20 @@
 				<li>env\Scripts\activate.bat</li>
 			</ul>
 		</li>
-		<li>Installez les paquets python avec le gestionaire de paquets pip
+		<li>Installez les paquets python avec le gestionnaire de paquets pip
 			<ul>
 				<li>pip install -r requirements.txt</li>
 			</ul>
 		</li>
-		<li>Lancez le programme avec le fichier run
+		<li>Lancez le programme avec le fichier run.py
 			<ul>
 				<li>python run.py</li>
 			</ul>
 		</li>
 	</ol>
+	<br>
+	Les fichiers générés par le programme seront sauvegardés dans le dossier csv du resperoire principal.<br>
+	Pour toute autre question, contactez moi à l'adresse suivante : mavamalonga.alpha@gmail.com
 </p>
 
 	

@@ -49,6 +49,7 @@ urls_list = ['http://books.toscrape.com/catalogue/category/books/sequential-art_
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-2.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-3.html', 
 'http://books.toscrape.com/catalogue/category/books/sequential-art_5/page-4.html']
-books = BOOKS("sequential-art_5", urls_list)
+catalogue_page = "https://books.toscrape.com"
+books = BOOKS("sequential-art_5", urls_list, catalogue_page)
 books.main()
 """

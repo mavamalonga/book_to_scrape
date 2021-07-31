@@ -16,7 +16,6 @@ class Config:
 
 	def parse_dirname(self, path):
 	 	og_path = path.replace('\\', "\\\\")
-	 	print(og_path)
 	 	return og_path
 
 	def main(self):
@@ -24,6 +23,8 @@ class Config:
 	 	og_path = self.parse_dirname(path)
 	 	return og_path
 
+"""
 config = Config()
 dirname = config.get_dirname()
 config.parse_dirname(dirname)
+"""

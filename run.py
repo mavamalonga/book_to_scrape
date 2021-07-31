@@ -4,8 +4,8 @@ from app.catalogue import CATALOGUE
 from app.category import CATEGORIES
 from app.book import BOOKS
 from app.page_content import PAGE_CONTENT
+from app.image import Download_image
 from config import Config 
-
 
 """
 main retrieves all modules from the app
@@ -29,7 +29,7 @@ def main():
 		book = BOOKS(category_name, other_pages_urls, config.catalogue_page)
 		all_books = book.main()
 
-		page_content = PAGE_CONTENT(category_name, all_books, dirname, config.header)
+		page_content = PAGE_CONTENT(category_name, all_books, dirname, config.header, config.home_page)
 		page_content.main()
 
 	stop = timeit.default_timer()

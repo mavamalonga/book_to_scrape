@@ -9,11 +9,11 @@ At the end the main method returns the list of urls retrieved.
 """
 class Books:
 
-	 def __init__(self, category_name, pages_list, catalogue_page):
-	 	self.catalogue_index_page = catalogue_page
+	 def __init__(self, category_name, list_pages, catalog_index_page):
+	 	self.catalog_index_page = catalog_index_page
 	 	self.category_name = category_name
-	 	self.pages_list = pages_list
-	 	self.books_urls_list = []
+	 	self.list_pages = list_pages
+	 	self.list_urls_books = []
 
 	 def make_request(self, page):
 	 	try:
@@ -25,22 +25,22 @@ class Books:
 
 	 def parse_path(self, path):
 	 	# parse and concat catalogue_url with ressource url
-	 	book_url = self.catalogue_index_page + path[8:]
-	 	return book_url
+	 	url_book = self.catalogue_index_page + path[8:]
+	 	return url_book
 
 	 def get_books_path(self):
-	 	articles_list = self.soup.find_all("article", class_="product_pod")
-	 	for article in articles_list:
+	 	list_articles = self.soup.find_all("article", class_="product_pod")
+	 	for article in list_articles:
 	 		path = article.find("div", class_="image_container").find("a")["href"]
-	 		book_url = self.parse_path(path)
-	 		self.books_urls_list.append(book_url)
+	 		url_book = self.parse_path(path)
+	 		self.list_urls_books.append(url_book)
 
 	 def main(self):
-	 	for page in self.pages_list:
+	 	for page in self.list_pages:
 	 		self.make_request(page)
 	 		self.get_books_path()
-	 	print("There are " + str(len(self.books_urls_list)) + " books in " + str(self.category_name) + " category.")
-	 	return self.books_urls_list
+	 	print("There are " + str(len(self.list_urls_books)) + " books in " + str(self.category_name) + " category.")
+	 	return self.list_urls_books
 
 """
 urls_list = ['http://books.toscrape.com/catalogue/category/books/sequential-art_5/index.html', 

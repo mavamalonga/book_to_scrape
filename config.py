@@ -1,7 +1,6 @@
 import os 
 
 class Config:
-
 	def __init__(self):
 		self.home_page = "https://books.toscrape.com"
 		self.catalogue_page = "http://books.toscrape.com/catalogue"
@@ -15,13 +14,13 @@ class Config:
 		return path
 
 	def parse_dirname(self, path):
-	 	og_path = path.replace('\\', "\\\\")
-	 	return og_path
+	 	path = path.replace('\\', "\\\\")
+	 	return path
 
 	def main(self):
 	 	path = self.get_dirname()
-	 	og_path = self.parse_dirname(path)
-	 	return og_path
+	 	path = self.parse_dirname(path)
+	 	return path
 
 """
 config = Config()

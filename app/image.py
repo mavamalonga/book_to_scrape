@@ -9,11 +9,11 @@ dirname = "C:\\Users\\HP\\Desktop\\book_to_scrape"
 """
 
 class Download_image:
-    def __init__(self, home_page, book_name, image_url, directory):
+    def __init__(self, home_page, book_name, image_url, category_name):
         self.home_page = home_page
         self.book_name = book_name
         self.image_url = image_url
-        self.directory = directory
+        self.category_name = category_name
 
     def parse_image_url(self):
         pathfile =  ""
@@ -29,11 +29,22 @@ class Download_image:
         return pic_url
 
     def parse_book_name(self):
-        filename = self.book_name.replace(" ", "").replace("\n", "") + ".png"
+        """A filename cannot contain the following characters :
+        \\/:*?"<>|
+        """
+        name = str(self.book_name)
+        name = name.replace('"', " ").replace("'", " ").replace("*", " ").replace("/", " ")
+        name = name.replace("?", " ").replace("<", " ").replace(">", " ").replace("|", " ")
+        name = name.replace(":", " ").replace("\n", "").replace('.', "")
+
+        if len(name) > 24:
+            name = name.split(",")[0]
+
+        filename = name + ".png"
         return filename
 
     def save_img(self, filename, pic_url):
-        local_path_filename = 'images' + "/" + str(self.directory) + '/' + filename
+        local_path_filename = 'images' + "/" + str(self.category_name) + '/' + filename
         with open(local_path_filename, 'wb') as file:
             response = requests.get(pic_url, stream=True)
     

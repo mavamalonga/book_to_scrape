@@ -25,7 +25,7 @@ class Books:
 
 	 def parse_path(self, path):
 	 	# parse and concat catalogue_url with ressource url
-	 	url_book = self.catalogue_index_page + path[8:]
+	 	url_book = self.catalog_index_page + path[8:]
 	 	return url_book
 
 	 def get_books_path(self):

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import timeit
-from app.catalogue import CATALOGUE
-from app.category import CATEGORIES
-from app.book import BOOKS
+from app.catalogue import Catalogue
+from app.category import Categories
+from app.book import Books
 from app.page_content import PAGE_CONTENT
 from app.image import Download_image
 from config import Config 
@@ -16,17 +16,17 @@ def main():
 
 	config = Config()
 	dirname = config.main()
-	catalogue = CATALOGUE(config.home_page)
+	catalogue = Catalogue(config.home_page)
 	categories_list = catalogue.main()
 	# deletion of the first value which corresponds to the list of all books
 	del categories_list[0]
 
 	for category_name, category_index_page in categories_list:
 
-		categories = CATEGORIES(category_name, category_index_page, config.book_page)
+		categories = Categories(category_name, category_index_page, config.book_page)
 		other_pages_urls = categories.main()
 
-		book = BOOKS(category_name, other_pages_urls, config.catalogue_page)
+		book = Books(category_name, other_pages_urls, config.catalog_page)
 		all_books = book.main()
 
 		page_content = PAGE_CONTENT(category_name, all_books, dirname, config.header, config.home_page)

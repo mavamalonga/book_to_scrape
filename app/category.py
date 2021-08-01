@@ -2,11 +2,11 @@
 import requests
 from bs4 import BeautifulSoup
 
-
 """class consults the chosen category page, 
 and checks if the category is multi-page and retrieves the other URLs.
-The main method returns the urls list of all the pages in the category."""
-class CATEGORIES:
+The main method returns the urls list of all the pages in the category.
+"""
+class Categories:
 
 	 def __init__(self, category_name, index_page, book_page):
 	 	self.category_name = category_name
@@ -50,12 +50,3 @@ class CATEGORIES:
 
 	 	print("The are " + str(len(self.pages_list)) + " pages in the " + str(self.category_name) + " category.")
 	 	return self.pages_list
-
-
-"""
-url = "https://books.toscrape.com/catalogue/category/books/womens-fiction_9/index.html"
-category_name = "sequential-art"
-categories = CATEGORIES(category_name, url)
-main = categories.main()
-print(main)
-"""
